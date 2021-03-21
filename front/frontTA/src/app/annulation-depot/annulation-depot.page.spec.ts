@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { AdminSystemPage } from './admin-system.page';
+import { AnnulationDepotPage } from './annulation-depot.page';
 
-describe('AdminSystemPage', () => {
-  let component: AdminSystemPage;
-  let fixture: ComponentFixture<AdminSystemPage>;
+describe('AnnulationDepotPage', () => {
+  let component: AnnulationDepotPage;
+  let fixture: ComponentFixture<AnnulationDepotPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminSystemPage ],
+      declarations: [ AnnulationDepotPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(AdminSystemPage);
+    fixture = TestBed.createComponent(AnnulationDepotPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

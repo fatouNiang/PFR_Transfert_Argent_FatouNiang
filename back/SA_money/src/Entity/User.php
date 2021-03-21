@@ -65,7 +65,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\NotBlank
      * @Groups({"user:read", "user:write"})
-     * @Groups({"compte:write", "transaction:write"})
+     * @Groups({"compte:write", "compte:read", "transaction:write"})
      */
     private $email;
 
@@ -75,14 +75,14 @@ class User implements UserInterface
      * @var string The hashed password
      * @ORM\Column(type="string")
      * @Groups("user:write")
-     * @Groups({"compte:write", "transaction:write"})
+     * @Groups({"compte:write", "compte:read", "transaction:write"})
      */
     private $password= "secret";
 
     /**
      * @SerializedName("password")
      * @Groups("user:write")
-     * @Groups({"compte:write", "transaction:write"})
+     * @Groups({"compte:write", "compte:read", "transaction:write"})
      */
     private $plainPassword;
 
@@ -90,7 +90,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
      * @Groups({"user:read", "user:write"})
-     * @Groups({"compte:write"})
+     * @Groups({"compte:write", "compte:read"})
      */
     private $firstname;
 
@@ -98,7 +98,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
      * @Groups({"user:read", "user:write"})
-     * @Groups({"compte:write", "transaction:write"})
+     * @Groups({"compte:write", "compte:read", "transaction:write"})
      */
     private $lastname;
 
@@ -114,7 +114,7 @@ class User implements UserInterface
     /**
      * @ORM\ManyToOne(targetEntity=Profil::class, inversedBy="users", cascade={"persist", "remove"})
      * @MaxDepth(7)
-     * @Groups({"compte:write", "transaction:write"})
+     * @Groups({"compte:write", "compte:read", "transaction:write"})
      * @Groups({"profil:read", "profil:write", "user:write"})
      */
     private $profil;
@@ -122,7 +122,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="blob", nullable=true)
      * @Groups({"user:read", "user:write"})
-     * @Groups({"compte:write", "transaction:write"})
+     * @Groups({"compte:write", "compte:read", "transaction:write"})
 
      */
     private $avatar;

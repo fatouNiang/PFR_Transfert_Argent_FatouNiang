@@ -19,6 +19,13 @@ class TransactionController extends AbstractController
 {
 
 
+    private $transactionRepo;
+
+    public function __construct(
+        TransactionRepository $transactionRepo){
+        $this->transactionRepo= $transactionRepo;
+    }
+
     /**
      * @Route("/api/transaction/depots", name="depot", methods={"POST"})
      */
@@ -30,8 +37,6 @@ class TransactionController extends AbstractController
         $compte= $user_depot->getAgence()->getCompte();
        // dd($compte);
         $data= \json_decode($request->getContent(), true);
-
-
 
         if($data['type'] === 'depot'){
             if($compte->getMontant() < $data['montant'] ){
@@ -45,8 +50,9 @@ class TransactionController extends AbstractController
              //dd($transaction);
             $transaction->initialise($this->getUser());
             $transaction->setCode($userService->CreerMatricule($data["clientDepot"]["nomComplet"]));
-            $compte->setMontant($compte->getMontant() + $transaction->getMontant());
-            dd($compte);
+            $compte->setMontant($compte->getMontant() - $transaction->getMontant());
+            $transaction->setType("depot");
+            //dd($compte);
            // dd($transaction);
 
             $em->persist($transaction);
@@ -63,6 +69,7 @@ class TransactionController extends AbstractController
                     if($transaction->getDateAnnulation() == null){
                         $transaction->setDateAnnulation(new DateTime('now')); 
                         $compte->setMontant($compte->getMontant() + $transaction->getMontant());
+                        $transaction->setType("annulé");
                         $em->flush();
                         return $this->json([
                             'message'=>'Transaction annuler avec succée'
@@ -92,6 +99,9 @@ class TransactionController extends AbstractController
                         if($compte->getMontant() > $transaction->getMontant()){
                             $transaction->setDateRetrait(new DateTime('now'));
                             $transaction->setUserRetrait($user_depot);
+                            $transaction->setType("retrait");
+                            //$transaction->setfraisRetrait();
+
                             $compte->setMontant( $compte->getMontant()+ $transaction->getFraisRetrait());
                             $transaction->getClientRetrait()->setCNI($data['cni']);
                             $em->flush();
@@ -111,7 +121,7 @@ class TransactionController extends AbstractController
                     }
                 }else{
                     return $this->json([
-                        'message'=>'Aregent déja retirer'
+                        'message'=>'Argent déja retiré.'
                     ],400);
                 }
             }
@@ -142,4 +152,5 @@ class TransactionController extends AbstractController
 
         }
     }
+
 }

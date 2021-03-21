@@ -22,22 +22,6 @@ class UserService
     }
 
 
-
-
-
-    // public function genererCode($longueur=6){
-    //     $char= 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    //    // $char='0123456789';
-    //     $longueurMax= strlen($char);
-    //    // $chaineAleatoire='';
-    //    // for ($i=0; $i < $longueur; $i++) { 
-    //         //$chaineAleatoire= $char[rand(0, $longueurMax-1)];
-    //         $chaineAleatoire= substr($char, 0, 2).rand(100, 500).substr($char, 0, 2);
-    //    // }    
-    //     return $chaineAleatoire;
-    // }
-
- 
     public function CreerMatricule($nom=10)
     {
 

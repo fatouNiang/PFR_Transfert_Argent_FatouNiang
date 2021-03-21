@@ -17,8 +17,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *      "get"={"access_control"= "is_granted('ROLE_ADMINSYSTEM')"},
  *      "delete"={"access_control"= "is_granted('ROLE_ADMINSYSTEM')"}
  * },
+ *    normalizationContext={"groups"={"compte:read"}},
  *    denormalizationContext={"groups"={"compte:write"}},
-
  * )
  * @ORM\Entity(repositoryClass=CompteRepository::class)
  */
@@ -33,25 +33,25 @@ class Compte
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"compte:write"})
+     * @Groups({"compte:write" , "compte:read"})
      */
     private $numCompte;
 
     /**
-     * @ORM\Column(type="float")
-     * @Groups({"compte:write"})
+     * @ORM\Column(type="integer")
+     * @Groups({"compte:write", "compte:read"})
      */
     private $montant=700000.00;
 
     /**
      * @ORM\Column(type="boolean")
-     * @Groups({"compte:write"})
+     * @Groups({"compte:write", "compte:read"})
      */
     private $archivage=false;
 
     /**
      * @ORM\OneToOne(targetEntity=Agence::class, mappedBy="compte", cascade={"persist", "remove"})
-     * @Groups({"compte:write"})
+     * @Groups({"compte:write", "compte:read"})
      */
     private $agence;
 

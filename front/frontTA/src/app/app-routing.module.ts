@@ -21,14 +21,6 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'admin-system',
-    loadChildren: () => import('./admin-system/admin-system.module').then( m => m.AdminSystemPageModule)
-  },
-  {
-    path: 'compte',
-    loadChildren: () => import('./compte/compte.module').then( m => m.ComptePageModule)
-  },
-  {
     path: 'depot',
     loadChildren: () => import('./depot/depot.module').then( m => m.DepotPageModule)
   },
@@ -43,6 +35,10 @@ const routes: Routes = [
   {
     path: 'commission',
     loadChildren: () => import('./commission/commission.module').then( m => m.CommissionPageModule)
+  },
+  {
+    path: 'annulation-depot',
+    loadChildren: () => import('./annulation-depot/annulation-depot.module').then( m => m.AnnulationDepotPageModule)
   },
 ];
 

@@ -104,9 +104,16 @@ class Transaction
     private $clientRetrait;
 
     /**
+     * @Groups({"transaction:write"})
      * @ORM\Column(type="date", nullable=true)
      */
     private $dateAnnulation;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Groups({"transaction:write"})
+     */
+    private $type;
 
     public function getId(): ?int
     {
@@ -269,9 +276,6 @@ class Transaction
         return $this;
     }
 
-    public function calculFrais($pourcentage){
-        return ($pourcentage * $this->frais )/100;
-    }
 
     public function getDateAnnulation(): ?\DateTimeInterface
     {
@@ -285,7 +289,23 @@ class Transaction
         return $this;
     }
 
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
     
+    public function calculFrais($pourcentage){
+        return ($pourcentage * $this->frais )/100;
+    }
+
     public function initialise($user_depot){
 
         $this->calculFraisTotal();
@@ -378,6 +398,7 @@ class Transaction
                 break;
         }
     }
+
 
  
 }

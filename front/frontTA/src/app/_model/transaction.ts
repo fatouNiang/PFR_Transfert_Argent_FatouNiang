@@ -14,5 +14,6 @@ export interface Transaction {
       UserRetrait: any,
       clientDepot: any,
       clientRetrait: any,
-      userRetrait: any
+      userRetrait: any,
+      type: string
 }

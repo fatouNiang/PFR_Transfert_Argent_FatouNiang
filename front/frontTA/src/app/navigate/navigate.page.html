@@ -60,7 +60,7 @@
                 <ion-textarea
                   disabled
                   readonly
-                  value="150 000 000 cfa">
+                  value="1500000 CFA">
                 </ion-textarea>
 
               </ion-item>
@@ -78,18 +78,27 @@
                 Depot</ion-text>
             </ion-item>
             <ion-item (click)="getRetrait()">
-              <ion-text>
-                <ion-icon name="arrow-undo"></ion-icon>
+              <ion-text><ion-icon name="arrow-undo"></ion-icon>
                 Retrait</ion-text>
+            </ion-item>
+            <ion-item (click)="getAnnulation()">
+              <ion-text><ion-icon name="arrow-undo"></ion-icon>
+                Annulation Depot</ion-text>
             </ion-item>
             <ion-item (click)="getTransactions()">
               <ion-text><ion-icon name="sync"></ion-icon>
                 Mes Transactions</ion-text>
             </ion-item>
             <ion-item (click)="getTransactions()">
-              <ion-text><ion-icon name="logo-angular"></ion-icon>
+              <ion-text><ion-icon name="checkmark-done-circle"></ion-icon>
                 Toutes mes transactions</ion-text>
             </ion-item>
+
+            <ion-item (click)="getCommission()">
+              <ion-text><ion-icon name="barcode"></ion-icon>
+                Mes commissions</ion-text>
+            </ion-item>
+
             <ion-item (click)="getCalculatrice()">
 
                 <ion-text><ion-icon name="calculator"></ion-icon>

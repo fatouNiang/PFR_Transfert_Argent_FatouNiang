@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -10,7 +11,6 @@ export class DepotService {
   montant:number;
 
 
-
   constructor(private http: HttpClient) { }
 
   depot(body: any){
@@ -18,6 +18,13 @@ export class DepotService {
         body, { headers : this.headerJson } );
   }
 
+  // getCompte(id: any):any{
+  //   return this.http.get(`${environment.apiUrl}/comptes`+ id)
+  // }
+
+  // getSolde(): Observable<any>{
+  //   return this.http.get<any[]>(`${environment.apiUrl}/comptes`);
+  // }
 
 max_array = [5000, 10000, 15000, 20000, 50000,60000,75000,120000,150000,200000,250000,
     300000,400000,750000,900000,1000000,1125000,1400000,2000000];
@@ -35,7 +42,7 @@ frai_array = [425, 850, 1270, 1695, 2500, 3000, 4000, 5000, 6000, 7000, 8000, 90
         }
       }
     }
-    
+
 //  calculFraisTotal(montant:number){
 
 //    let frais: number;

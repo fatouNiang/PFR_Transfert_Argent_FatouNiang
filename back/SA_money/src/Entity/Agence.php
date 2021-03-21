@@ -24,19 +24,19 @@ class Agence
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"compte:write"})
+     * @Groups({"compte:write", "compte:read"})
      */
     private $nomAgence;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"compte:write"})
+     * @Groups({"compte:write", "compte:read"})
      */
     private $adresse;
 
     /**
      * @ORM\Column(type="boolean")
-     * @Groups({"compte:write"})
+     * @Groups({"compte:write", "compte:read"})
      */
     private $archivage=false;
 
@@ -48,7 +48,7 @@ class Agence
 
     /**
      * @ORM\OneToMany(targetEntity=User::class, mappedBy="agence", cascade={"persist", "remove"})
-     * @Groups({"compte:write"})
+     * @Groups({"compte:write", "compte:read"})
      */
     private $user;
 
